@@ -1,0 +1,29 @@
+{% load static %}
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet"  href="{%  static  'main.css'  %}">
+</head>
+
+
+<a href="{% url 'home' %}">Home</a> / 
+<a href="{% url 'login' %}">Login</a>
+
+<h2 class = 'header1'>SIGN UP</h2>
+<form method="post">
+	{% csrf_token %}
+	{% for field in form %}
+	<p>
+		{{ field.label_tag }}<br/>
+		{{ field }}
+		{% if field.help_text %}
+			<small style="color: green">{{ field.help_text }}</small>
+		{% endif %}
+		{% for error in field.errors %}
+			<p style="color: red">{{ error }}</p>
+		{% endfor %}
+	</p>
+	{% endfor %}
+	<button type="submit">Sign up</button>
+</form>

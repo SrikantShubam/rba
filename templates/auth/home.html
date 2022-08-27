@@ -1,0 +1,15 @@
+{% load static %}
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet"  href="{%  static  'main.css'  %}">
+</head>
+{% if user.is_authenticated %}
+	<p>Hi {{ user.full_name }}, Welcome to the main page!</p>
+	<p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+	<p>You are not logged in! Please login or register.</p>
+	<a href="{% url 'login' %}">Log In</a> / 
+	<a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
