@@ -8,6 +8,460 @@
 {% if user.is_authenticated %}
 	<p>Hi {{ user.full_name }}, Welcome to the main page!</p>
 	<p><a href="{% url 'logout' %}">Log Out</a></p>
+	<b>Hash:</b><span id="hash-code"></span><br>
+	<canvas id="myCanvas"  style="border: 1px solid #000000" ></canvas>
+
+
+	<script id="hello-data" type="application/json">{{ user.username}}</script>
+	
+
+
+
+	<script type="module">
+
+		// Import the functions you need from the SDKs you need
+	  
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCEzPJutmAxiZZzzLyKQvfkNbDEq1I-4Es",
+    authDomain: "data-attributes.firebaseapp.com",
+    databaseURL: "https://data-attributes-default-rtdb.firebaseio.com",
+    projectId: "data-attributes",
+    storageBucket: "data-attributes.appspot.com",
+    messagingSenderId: "793765220741",
+    appId: "1:793765220741:web:e6dc357fe0a1513866f4ec",
+    measurementId: "G-BHDYV8WE8P"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+	  import {getDatabase,ref,set} from "https://www.gstatic.com/firebasejs/9.9.3/firebase-database.js";
+const db=getDatabase();
+
+const value = document.getElementById('hello-data').textContent;
+	
+
+console.log(value);
+			
+		var today = new Date();
+		var time = today.getHours() + "H" + today.getMinutes()+"M"
+		console.log(time);
+		let UID=value+"UID"+time;
+		console.log("id--------------------------------------------------",UID);
+
+	function plugins(){
+		
+		let plugins=[];
+		for (var i = 0;  i < navigator.plugins.length;  i++)
+		{
+			
+			plugins.push(navigator.plugins[i].name);
+	
+		}
+		return plugins;
+	}
+	
+	
+
+	function listFonts () {
+	
+	let fonts = []
+	
+	for (let node of document.querySelectorAll('*')) {
+	
+	  if (!node.style) continue
+	
+	  for (let pseudo of ['', ':before', ':after']) {
+	
+		let fontFamily = getComputedStyle(node, pseudo).fontFamily
+	
+		fonts = fonts.concat(fontFamily.split(/\n*,\n*/g))
+	
+	  }
+	
+	}
+	
+	// Remove duplicate elements from fonts array
+	// and remove the surrounding quotes around elements
+	return [...new Set(fonts)]
+	  .map(font => font.replace(/^\s*['"]([^'"]*)['"]\s*$/, '$1').trim())
+	
+	}
+	var fonts_start=new Date().getTime();
+
+	var fonts_list=listFonts()
+
+
+	console.log("fonts----------------",fonts_list)
+	var fonts_end=new Date().getTime();
+	const fonts_totaltime=fonts_end-fonts_end;
+	var plug_start=new Date().getTime();
+	var plug=plugins()
+	var plug_end=new Date().getTime();
+	const plugins_totaltime=plug_end-plug_start
+	console.log(plug)
+	
+	
+	class JavascriptDataDownloader {
+	
+	constructor(data={}) {
+		this.data = data;
+	}
+	
+	download (type_of = "json/plain", filename= "data.json") {
+		let body = document.body;
+		const a = document.createElement("a");
+		a.href = URL.createObjectURL(new Blob([JSON.stringify(this.data, null, 2)], {
+			type: type_of
+		}));
+		a.setAttribute("download", filename);
+		body.appendChild(a);
+		a.click();
+		body.removeChild(a);
+	}
+	} 
+	
+	class JavascriptDataDownloader2 {
+		
+		constructor(data={}) {
+			this.data = data;
+		}
+		
+		download (type_of = "json/plain", filename= "plugins.json") {
+			let body = document.body;
+			const a = document.createElement("a");
+			a.href = URL.createObjectURL(new Blob([JSON.stringify(this.data, null, 2)], {
+				type: type_of
+			}));
+			a.setAttribute("download", filename);
+			body.appendChild(a);
+			a.click();
+			body.removeChild(a);
+		}
+		} 
+	
+	// new JavascriptDataDownloader(g).download();
+	// new JavascriptDataDownloader2(plug).download();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	////////////////////
+	///////
+		function canvas(){
+		console.log("CANVASSSSSSSSSSSSSSSSSSS")
+		var start = new Date().getTime();
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+	
+		ctx.fillStyle = "rgb(255,0,255)";
+		ctx.beginPath();
+		ctx.rect(20, 20, 150, 100);
+		ctx.fill();
+		ctx.stroke();
+		ctx.closePath();
+		ctx.beginPath();
+		ctx.fillStyle = "rgb(0,255,255)";
+		ctx.arc(50, 50, 50, 0, Math.PI * 2, true);
+		ctx.fill();
+		ctx.stroke();
+		ctx.closePath();
+	
+		let txt = 'abz190#$%^@£éú';
+		ctx.textBaseline = "top";
+		ctx.font = '17px "Arial 17"';
+		ctx.textBaseline = "alphabetic";
+		ctx.fillStyle = "rgb(255,5,5)";
+		ctx.rotate(.03);
+		ctx.fillText(txt, 4, 17);
+		ctx.fillStyle = "rgb(155,255,5)";
+		ctx.shadowBlur = 8;
+		ctx.shadowColor = "red";
+		ctx.fillRect(20, 12, 100, 5);
+	
+		// hashing function
+		let src = canvas.toDataURL();
+		var hash = 0;
+	
+	
+		for (var i = 0; i < src.length; i++) {
+		  var char = src.charCodeAt(i);
+		   hash = ((hash << 5) - hash) + char;
+		  hash = hash & hash;
+		}
+	
+		// output this however you want
+		//$('#hash-code').html(hash);
+	
+		var canvas_hash = hash;
+		console.log("--------canvas hash-------------")
+		console.log(canvas_hash)
+	
+	
+		var end = new Date().getTime();
+	
+		var canvas_total_time = end - start;
+		let dict={'canvas':canvas_hash,'total_time':canvas_total_time}
+		
+		
+		return dict
+		}
+		class JavascriptDataDownloader3 {
+		
+		constructor(data={}) {
+			this.data = data;
+		}
+		
+		download (type_of = "json/plain", filename= "canvas.json") {
+			let body = document.body;
+			const a = document.createElement("a");
+			a.href = URL.createObjectURL(new Blob([JSON.stringify(this.data, null, 2)], {
+				type: type_of
+			}));
+			a.setAttribute("download", filename);
+			body.appendChild(a);
+			a.click();
+			body.removeChild(a);
+		}
+		
+		} 
+	
+		let canvas1=canvas()
+		
+	
+	
+	// Import the functions you need from the SDKs you need
+
+	
+		var start1 = new Date().getTime();
+		function webgl() {
+		  var canvas, ctx, width = 256, height = 128;
+		  canvas = document.body.appendChild(document.createElement("canvas"));
+		  canvas.width = width,
+			canvas.height = height,
+			ctx = canvas.getContext("webgl2") || canvas.getContext("experimental-webgl2") || canvas.getContext("webgl") || canvas.getContext("experimental-webgl") || canvas.getContext("moz-webgl");
+	
+		  try {
+			var f = "attribute vec2 attrVertex;varying vec2 varyinTexCoordinate;uniform vec2 uniformOffset;void main(){varyinTexCoordinate=attrVertex+uniformOffset;gl_Position=vec4(attrVertex,0,1);}";
+			var g = "precision mediump float;varying vec2 varyinTexCoordinate;void main() {gl_FragColor=vec4(varyinTexCoordinate,0,1);}";
+			var h = ctx.createBuffer();
+	
+			ctx.bindBuffer(ctx.ARRAY_BUFFER, h);
+	
+			var i = new Float32Array([-.2, -.9, 0, .4, -.26, 0, 0, .7321, 0]);
+	
+			ctx.bufferData(ctx.ARRAY_BUFFER, i, ctx.STATIC_DRAW), h.itemSize = 3, h.numItems = 3;
+	
+			var j = ctx.createProgram();
+			var k = ctx.createShader(ctx.VERTEX_SHADER);
+	
+			ctx.shaderSource(k, f);
+			ctx.compileShader(k);
+	
+			var l = ctx.createShader(ctx.FRAGMENT_SHADER);
+	
+			ctx.shaderSource(l, g);
+			ctx.compileShader(l);
+			ctx.attachShader(j, k);
+			ctx.attachShader(j, l);
+			ctx.linkProgram(j);
+			ctx.useProgram(j);
+	
+			j.vertexPosAttrib = ctx.getAttribLocation(j, "attrVertex");
+			j.offsetUniform = ctx.getUniformLocation(j, "uniformOffset");
+	
+			ctx.enableVertexAttribArray(j.vertexPosArray);
+			ctx.vertexAttribPointer(j.vertexPosAttrib, h.itemSize, ctx.FLOAT, !1, 0, 0);
+			ctx.uniform2f(j.offsetUniform, 1, 1);
+			ctx.drawArrays(ctx.TRIANGLE_STRIP, 0, h.numItems);
+	
+		  }
+		  catch (e) { }
+	
+		  var m = "";
+	
+		  var n = new Uint8Array(width * height * 4);
+		  ctx.readPixels(0, 0, width, height, ctx.RGBA, ctx.UNSIGNED_BYTE, n);
+		  m = JSON.stringify(n).replace(/,?"[0-9]+":/g, "");
+	
+	
+	
+	
+		  document.body.appendChild(document.createElement('br'));
+		  console.log(sha256(m));
+		  document.body.appendChild(document.createTextNode(sha256(m)));
+		  return sha256(m)
+		}
+	
+		var sha256 = (function () {
+	
+		  // Eratosthenes seive to find primes up to 311 for magic constants. This is why SHA256 is better than SHA1
+		  var i = 1,
+			j,
+			K = [],
+			H = [];
+	
+		  while (++i < 18) {
+			for (j = i * i; j < 312; j += i) {
+			  K[j] = 1;
+			}
+		  }
+	
+		  function x(num, root) {
+			return (Math.pow(num, 1 / root) % 1) * 4294967296 | 0;
+		  }
+	
+		  for (i = 1, j = 0; i < 313;) {
+			if (!K[++i]) {
+			  H[j] = x(i, 2);
+			  K[j++] = x(i, 3);
+			}
+		  }
+	
+		  function S(X, n) { return (X >>> n) | (X << (32 - n)); }
+	
+		  function SHA256(b) {
+			var HASH = H.slice(i = 0),
+			  s = unescape(encodeURI(b)), /* encode as utf8 */
+			  W = [],
+			  l = s.length,
+			  m = [],
+			  a, y, z;
+			for (; i < l;) m[i >> 2] |= (s.charCodeAt(i) & 0xff) << 8 * (3 - i++ % 4);
+	
+			l *= 8;
+	
+			m[l >> 5] |= 0x80 << (24 - l % 32);
+			m[z = (l + 64 >> 5) | 15] = l;
+	
+			for (i = 0; i < z; i += 16) {
+			  a = HASH.slice(j = 0, 8);
+	
+			  for (; j < 64; a[4] += y) {
+				if (j < 16) {
+				  W[j] = m[j + i];
+				} else {
+				  W[j] =
+					(S(y = W[j - 2], 17) ^ S(y, 19) ^ (y >>> 10)) +
+					(W[j - 7] | 0) +
+					(S(y = W[j - 15], 7) ^ S(y, 18) ^ (y >>> 3)) +
+					(W[j - 16] | 0);
+				}
+	
+				a.unshift(
+				  (
+					y = (
+					  a.pop() +
+					  (S(b = a[4], 6) ^ S(b, 11) ^ S(b, 25)) +
+					  (((b & a[5]) ^ ((~b) & a[6])) + K[j]) | 0
+					) +
+					(W[j++] | 0)
+				  ) +
+				  (S(l = a[0], 2) ^ S(l, 13) ^ S(l, 22)) +
+				  ((l & a[1]) ^ (a[1] & a[2]) ^ (a[2] & l))
+				);
+			  }
+	
+			  for (j = 8; j--;) HASH[j] = a[j] + HASH[j];
+			}
+	
+			for (s = ''; j < 63;) s += ((HASH[++j >> 3] >> 4 * (7 - j % 8)) & 15).toString(16);
+	
+			return s;
+		  }
+	
+		  return SHA256;
+		})();
+	
+		setTimeout(webgl, 1);
+	
+		var end1 = new Date().getTime();
+	
+		var webgl_total_time = end1 - start1;
+	
+		console.log(webgl_total_time)
+		
+		class JavascriptDataDownloader4 {
+		
+		constructor(data={}) {
+			this.data = data;
+		}
+		
+		download (type_of = "json/plain", filename= "webgl.json") {
+			let body = document.body;
+			const a = document.createElement("a");
+			a.href = URL.createObjectURL(new Blob([JSON.stringify(this.data, null, 2)], {
+				type: type_of
+			}));
+			a.setAttribute("download", filename);
+			body.appendChild(a);
+			a.click();
+			body.removeChild(a);
+		}
+		
+		} 
+	
+		let webgl1=webgl()
+		// dict2={"webgl":webgl1,"webgl_totaltime":total_time1}
+		// new JavascriptDataDownloader4(dict2).download();
+	
+	console.log("///////////////---------------------------------------/////////////////////////////////");
+
+	let g=listFonts()
+	console.log("fonts are",g);
+	plug=plugins()
+	console.log("plugins are",plug);
+
+	canvas1=canvas()
+	// console.log("the canvas data",dict);
+	// console.log(dict2["total_time"])
+
+
+
+		console.log("plugins are------------------asdasd----------------------   ",plug);
+
+
+function writeUserData() {
+  
+  set(ref(db, 'users/' + UID), {
+    webgl: webgl1,
+    webgl_total_time: webgl_total_time,
+    canvas_hash : canvas1.canvas,
+	canvas_total_time:canvas1.total_time,
+	plugins:plug,
+	plugins_totaltime:plugins_totaltime,
+	browser_fonts:g,
+	fonts_totaltime:fonts_totaltime
+
+
+  }).then(()=>{
+  alert("data stored successfully");
+}).catch((error)=>
+{
+	alert("unsuccessful ",error)
+})
+	}
+	writeUserData()	// import { RDSDataClient, BatchExecuteStatementCommand } from "@aws-sdk/client-rds-data";
+	  </script>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script> 
+
+
 {% else %}
 	<p>You are not logged in! Please login or register.</p>
 	<a href="{% url 'login' %}">Log In</a> / 

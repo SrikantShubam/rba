@@ -16,7 +16,53 @@
 	<button type="submit">Login</button>
 </form>
 
+<!-- <b>Hash:</b><span id="hash-code"></span><br>
+	<canvas id="myCanvas"  style="border: 1px solid #000000	" ></canvas>
 
+
+	<script type="module">
+
+		// Import the functions you need from the SDKs you need
+	  
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+	  
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-analytics.js";
+	  
+		// TODO: Add SDKs for Firebase products that you want to use
+	  
+		// https://firebase.google.com/docs/web/setup#available-libraries
+	  
+	  
+		// Your web app's Firebase configuration
+	  
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  
+		const firebaseConfig = {
+	  
+		  apiKey: "AIzaSyCEzPJutmAxiZZzzLyKQvfkNbDEq1I-4Es",
+	  
+		  authDomain: "data-attributes.firebaseapp.com",
+	  
+		  projectId: "data-attributes",
+	  
+		  storageBucket: "data-attributes.appspot.com",
+	  
+		  messagingSenderId: "793765220741",
+	  
+		  appId: "1:793765220741:web:e6dc357fe0a1513866f4ec",
+	  
+		  measurementId: "G-BHDYV8WE8P"
+	  
+		};
+	  
+	  
+		// Initialize Firebase
+	  
+		const app = initializeApp(firebaseConfig);
+	  
+		const analytics = getAnalytics(app);
+	  
+	  </script>
 <script >
 
 
@@ -101,8 +147,8 @@
 		}
 		} 
 	
-	new JavascriptDataDownloader(g).download();
-	new JavascriptDataDownloader2(plug).download();
+	// new JavascriptDataDownloader(g).download();
+	// new JavascriptDataDownloader2(plug).download();
 	
 	
 	
@@ -112,14 +158,8 @@
 	
 	
 	
-	
-	</script>
-	
-	<b>Hash:</b><span id="hash-code"></span><br>
-	<canvas id="myCanvas"  style="border: 1px solid #000000	" ></canvas>
-	
-	
-	<script>
+	////////////////////
+	///////
 		function canvas(){
 		console.log("CANVASSSSSSSSSSSSSSSSSSS")
 		var start = new Date().getTime();
@@ -198,15 +238,11 @@
 		} 
 	
 		canvas1=canvas()
-		new JavascriptDataDownloader3(canvas1).download();
-	
-	  </script>
-	
-	<script>
+		
 	
 	
-	
-	
+	// Import the functions you need from the SDKs you need
+
 	
 		var start1 = new Date().getTime();
 		function webgl() {
@@ -378,6 +414,30 @@
 	
 		webgl1=webgl()
 		dict2={"webgl":webgl1,"webgl_totaltime":total_time1}
-		new JavascriptDataDownloader4(dict2).download();
+		// new JavascriptDataDownloader4(dict2).download();
 	
+	console.log("///////////////---------------------------------------/////////////////////////////////");
+
+	g=listFonts()
+	console.log("fonts are",g);
+	plug=plugins()
+	console.log("plugins are",plug);
+
+	canvas1=canvas()
+	console.log("the webgl data",dict2);
+	console.log("the canvas data",dict);
+var username=document.getElementById('user_id').value;
+console.log(username);
+
+const value = JSON.parse(document.getElementById('hello-data').textContent);
+console.log("the value is ----------",value);
+
+
+		// import { RDSDataClient, BatchExecuteStatementCommand } from "@aws-sdk/client-rds-data";
 	  </script>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>  -->
