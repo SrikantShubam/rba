@@ -1,3 +1,4 @@
+from ipaddress import ip_address
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 
@@ -11,7 +12,6 @@ import requests
 import ctypes
 from time import gmtime, strftime
 def home(request):
-
     
         
         if request.user is not None:
@@ -66,8 +66,11 @@ def home(request):
 
              # getting ip-----------------------------------
             start_ip = time.time()
-            response = requests.get('https://api64.ipify.org?format=json').json()
-            ip_address = response["ip"]
+            # response = requests.get('https://api64.ipify.org?format=json').json()
+            # ip_address = response["ip"]
+
+            ip_address=print(request.META['REMOTE_ADDR'])
+
             print('the ip address-------',ip_address)
             end_ip = time.time()
             final_ip = print(end_ip-start_ip)
@@ -174,6 +177,7 @@ def home(request):
             overall_totaltime=total_end-total_start
             data=data_collected(Uid=uid,userid=username,ip=ip_address,system_fonts=sys_fonts,language=lang,time_zone =local_timezone,date=naive_datetime.date(),time_collected=time_collected,city=city,region=region,country=country,browser_name=browser_ua.family, browser_version =browser_ua.version_string,os_family=system_ua.family,os_version=system_ua.version_string,ua_totaltime=ua_totaltime,ip_totaltime=final_ip,timezone_totaltime=final_timezone,location_totaltime=location_totaltime,system_fonts_totaltime=fonts_totaltime,lang_totaltime=lang_totaltime,overall_totaltime=overall_totaltime)
             data.save()
+
     
             return render(request, 'auth/home.html')
 
