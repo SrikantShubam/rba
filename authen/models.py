@@ -10,7 +10,7 @@ class CustomUser(AbstractUser):
 class data_collected(models.Model):
     Uid=models.CharField(max_length=400,default="Id not given")
     userid=models.CharField(max_length=400,null=True,blank=True,default="something")
-    ip=models.CharField(max_length=40)
+    ip=models.CharField(max_length=40,null=True,blank=True,default="something")
     date=models.DateField()
     time_zone=models.CharField(max_length=40,default='UTC',null=True,blank=True)
     language=models.CharField(max_length=40,default='en-US',null=True,blank=True)
