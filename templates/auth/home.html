@@ -52,7 +52,11 @@ console.log(value);
 		var today = new Date();
 		var time = today.getHours() + "H" + today.getMinutes()+"M"
 		console.log(time);
-		let UID=value+"UID"+time;
+		
+		
+  		var date=today.getDate()+"D"+today.getMonth()+"M"+today.getFullYear()+"Y";
+		console.log(date);
+		let UID=value+"UID"+time+"DD"+date;
 		console.log("id--------------------------------------------------",UID);
 
 	function plugins(){

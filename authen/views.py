@@ -11,13 +11,15 @@ from django.utils.timezone import make_aware
 import requests
 import ctypes
 from time import gmtime, strftime
+from datetime import date
 def home(request):
     
         
         if request.user is not None:
             obj11=datetime.datetime.now()
             time_stamp=str(make_aware(obj11).hour)+"H"+str(make_aware(obj11).minute)+"M"
-            print("asdasdasdasdsadasdsa",time_stamp)
+            # current_time = datetime.datetime.now()
+            # print("asdasdasdasdsadasdsa",str(date.today()))
             uid=str(request.user)+"UID"+time_stamp
 
             total_start=time.time()
