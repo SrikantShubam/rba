@@ -19,7 +19,7 @@ def home(request):
             obj11=datetime.datetime.now()
             time_stamp=str(make_aware(obj11).hour)+"H"+str(make_aware(obj11).minute)+"M"
             # current_time = datetime.datetime.now()
-            # print("asdasdasdasdsadasdsa",str(date.today()))
+            # print("asdasdasdasdsadasdsa",str(date.today()))  #17D8M2022Y in this format date is needed
             uid=str(request.user)+"UID"+time_stamp
 
             total_start=time.time()
