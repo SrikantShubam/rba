@@ -18,9 +18,9 @@ def home(request):
         if request.user is not None:
             obj11=datetime.datetime.now()
             time_stamp=str(make_aware(obj11).hour)+"H"+str(make_aware(obj11).minute)+"M"
-            # current_time = datetime.datetime.now()
-            # print("asdasdasdasdsadasdsa",str(date.today()))  #17D8M2022Y in this format date is needed
-            uid=str(request.user)+"UID"+time_stamp
+            date_stamp=str(make_aware(obj11).day)+"D"+str(make_aware(obj11).month)+"M"+str(make_aware(obj11).year)+"Y"
+            print("asdasdasdasdsadasdsa",date_stamp)
+            uid=str(request.user)+"UID"+time_stamp+"DD"+date_stamp
 
             total_start=time.time()
             #username start--------------------
@@ -68,10 +68,10 @@ def home(request):
 
              # getting ip-----------------------------------
             start_ip = time.time()
-            # response = requests.get('https://api64.ipify.org?format=json').json()
-            # ip_address = response["ip"]
+            response = requests.get('https://api64.ipify.org?format=json').json()
+            ip_address = response["ip"]
 
-            ip_address=print(request.META['REMOTE_ADDR'])
+#             ip_address=print(request.META['REMOTE_ADDR'])
 
             print('the ip address-------',ip_address)
             end_ip = time.time()
