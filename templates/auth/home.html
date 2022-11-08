@@ -1,28 +1,31 @@
 {% load static %}
+
 <head>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet"  href="{%  static  'main.css'  %}">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{%  static  'main.css'  %}">
 </head>
 {% if user.is_authenticated %}
-	<p>Hi {{ user.full_name }}, Welcome to the main page!</p>
-	<p><a href="{% url 'logout' %}">Log Out</a></p>
-	<b>Hash:</b><span id="hash-code"></span><br>
-	<canvas id="myCanvas"  style="border: 1px solid #000000" ></canvas>
+<p>Hi {{ user.full_name }}, Welcome to the main page!</p>
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+<b>Hash:</b><span id="hash-code"></span><br>
+<canvas id="myCanvas" style="border: 1px solid #000000"></canvas>
+<div id="list"></div>
+<script id="hello-data" type="application">
+	{{user.username}}
+</script>
 
 
-	<script id="hello-data" type="application/json">{{ user.username}}</script>
+
+
+<script type="module">
+
+	// Import the functions you need from the SDKs you need
+
+		// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
 	
-
-
-
-	<script type="module">
-
-		// Import the functions you need from the SDKs you need
-	  
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -44,20 +47,20 @@
 	  import {getDatabase,ref,set} from "https://www.gstatic.com/firebasejs/9.9.3/firebase-database.js";
 const db=getDatabase();
 
-const value = document.getElementById('hello-data').textContent;
+let value = document.getElementById('hello-data').innerText.replace(/\s+/g, ' ').trim();
 	
 
-console.log(value);
-			
-		var today = new Date();
-		var time = today.getHours() + "H" + today.getMinutes()+"M"
-		console.log(time);
+console.log("the values is ",value);
+// WebSessionCounter.update();		
+var today = new Date();
+var time = today.getHours() + "H" + today.getMinutes()+"M"
+console.log("time is",time);
 		
 		
   		var date=today.getDate()+"D"+(today.getMonth()+1)+"M"+today.getFullYear()+"Y";
 		console.log(date);
 		let UID=value+"UID"+time+"DD"+date;
-		console.log("id--------------------------------------------------",UID);
+		console.log("id UID wala",UID.split(" ").join(""));
 
 	function plugins(){
 		
@@ -221,25 +224,10 @@ console.log(value);
 		
 		return dict
 		}
-		class JavascriptDataDownloader3 {
+	
+		// }
 		
-		constructor(data={}) {
-			this.data = data;
-		}
-		
-		download (type_of = "json/plain", filename= "canvas.json") {
-			let body = document.body;
-			const a = document.createElement("a");
-			a.href = URL.createObjectURL(new Blob([JSON.stringify(this.data, null, 2)], {
-				type: type_of
-			}));
-			a.setAttribute("download", filename);
-			body.appendChild(a);
-			a.click();
-			body.removeChild(a);
-		}
-		
-		} 
+		// } 
 	
 		let canvas1=canvas()
 		
@@ -436,17 +424,456 @@ console.log(value);
 		console.log("plugins are------------------asdasd----------------------   ",plug);
 
 
+
+//useragent------------------------------------------------------		
+var start_useragent = new Date().getTime();
+let agent = navigator.userAgent;
+console.log(" User agent", agent)
+var end_useragent = new Date().getTime();
+	
+var useragent_total_time = end_useragent - start_useragent;
+//useragent------------------------------------------------------		
+
+
+//ip and location------------------------------------------------------		
+
+	
+// $.getJSON('https://ipinfo.io/json', function(response){
+
+// var start_ip = new Date().getTime();
+// let ip=response.ip
+// console.log("anythihngasfdawfawdfqwfdwwfdw");
+// console.log(response.ip);
+
+// var end_ip = new Date().getTime();
+
+// let ip_total_time=end_ip - start_ip;
+
+// var start_location = new Date().getTime();
+
+// city.push(response.city)
+// region.push(response.region)	
+// country.push(response.country)
+// lat_long.push(response.loc)
+// console.log("the location",city,region,country,lat_long)
+// var end_location = new Date().getTime();
+
+// location_total_time.push(end_location - start_location);
+ 
+
+// $('.ip').text("IP Address: " + response.ip);
+// $('.city').text("City: " + response.city);
+// $('.region').text("Region: " + response.region);
+// $('.country').text("Country: " + response.country);
+// $('.postal').text("Postal Code: " + response.postal);
+// $('.location').text("Location (Latitude, Longitude): " + response.loc);
+// $('.timezone').text("Timezone: " + response.timezone);
+// });
+// let IP_again;	
+
+
+
+// $.get( "https://ipinfo.io/json", function(data){
+//     page = data;
+//     codeThatDependsOnPageVariable();
+// });
+
+// function codeThatDependsOnPageVariable() {
+//     console.log("ip inside page",page.ip);
+// 	var tip = page.ip
+
+// 	IP= tip;
+// }
+
+// IP=$(dataStore.getXml()).find('something').attr('somethingElse');
+// fetch("https://ipinfo.io/json",
+// ).then((response) => response.json())
+// .then((data) => 
+
+// // IP_again=data;
+// IP_again=data);
+
+// $.getJSON('https://ipinfo.io/json', function(response){
+
+// 	console.log("reach here... json" );
+
+//      var funcOne = function() {
+//         // this.sharedVal = response.ip;
+// 		console.log("reach here... funcone");
+// 		return response.ip
+//     };
+// 	// funcOne();
+//      var funcTwo = function() {
+// 		let some=funcOne();
+//         console.log("inside function 2",some);
+// 		var start_os_plat = new Date().getTime();
+// let OS=getOS()
+// console.log(OS)
+// var end_os_plat = new Date().getTime();
+
+// var os_plat_total_time = end_os_plat - start_os_plat;
+// //ip and location------------------------------------------------------		
+// let browser_version=platform.version
+// var start_browser_version = new Date().getTime();
+// console.log("the browser version",browser_version)
+// var end_browser_version = new Date().getTime();
+
+// var browser_version_total_time = end_browser_version - start_browser_version;
+// writeUserData();
+
+//     };
+// 	let some2=funcTwo();
+
+// 	console.log("something ...",some2);
+
+
+	
+// });
+
+// let some2=funcTwo();
+
+// 	console.log("something 2 ...",some2);
+// let fetchRes = fetch(
+// "https://ipinfo.io/json");
+//         // fetchRes is the promise to resolve
+//         // it by using.then() method
+//         fetchRes.then(res =>
+//             res.json()).then(d => {
+// 				ip=d.ip;
+//                 console.log("is he the king or what",d.ip)
+// 				console.log("does the king returns ",ip);
+//             })
+
+// let jsondata = "";
+// async function getJson(url) {
+//     let response = await fetch(url);
+//     let data = await response.json()
+//     return data;
+// }
+
+// async function main() {
+//     //OPTION 1
+//     // getJson(apiUrl)
+//     //     .then(data => console.log(data));
+
+//     //OPTION 2
+//     jsondata = await getJson("https://ipinfo.io/json")
+//     console.log("ip is->>",jsondata.ip);
+
+
+// return jsondata.ip;
+// }
+
+// ip=main();
+
+
+
+
+
+
+
+
+function getOS() {
+  var userAgent = window.navigator.userAgent,
+      platform = window.navigator.platform,
+      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+      windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+      iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+      os = null;
+
+  if (macosPlatforms.indexOf(platform) !== -1) {
+    os = 'Mac OS';
+  } else if (iosPlatforms.indexOf(platform) !== -1) {
+    os = 'iOS';
+  } else if (windowsPlatforms.indexOf(platform) !== -1) {
+    os = 'Windows';
+  } else if (/Android/.test(userAgent)) {
+    os = 'Android';
+  } else if (!os && /Linux/.test(platform)) {
+    os = 'Linux';
+  }
+
+  return os;
+}
+
+var start_os_plat = new Date().getTime();
+let OS=getOS()
+console.log("OS ye hai",OS)
+var end_os_plat = new Date().getTime();
+
+var os_plat_total_time = end_os_plat - start_os_plat;
+//ip and location------------------------------------------------------		
+let browser_version=platform.version
+var start_browser_version = new Date().getTime();
+console.log("the browser version",browser_version)
+var end_browser_version = new Date().getTime();
+
+var browser_version_total_time = end_browser_version - start_browser_version
+
+
+
+
+
+//system version
+var windows_sys_ver_start  = new Date().getTime();
+let windows_sys_ver;
+windows_sys_ver=navigator.oscpu;
+console.log(windows_sys_ver);
+var windows_sys_ver_end= new Date().getTime();
+
+var windows_sys_total_time =windows_sys_ver_end -windows_sys_ver_start;
+
+
+
+
+//screen res
+var screen_res_start= new Date().getTime();
+
+let screen_res_width=screen.availWidth;
+console.log(screen.availWidth);
+let screen_res_height=screen.availHeight;
+console.log(screen_res_height);
+
+
+var screen_res_end= new Date().getTime();
+
+var screen_res_total_time =screen_res_end-screen_res_start;
+
+
+
+
+
+
+
+
+
+
+
+//session count
+
+
+// class WebSessionCounter {
+//   constructor() {
+//     this.update();
+//   }
+
+//   get count() {
+//     if (canUseLocalStorage) {
+//       return Number(window.localStorage.getItem("user_web_session_count"));
+//     } else {
+//       return NaN;
+//     }
+//   }
+
+//   set count(val) {
+//     window.localStorage.setItem("user_web_session_count", val);
+//   }
+
+//   get lastActive() {
+//     const time = window.localStorage.getItem("user_web_session_last_active");
+
+//     if (time) {
+//       return moment(time);
+//     } else {
+//       return moment();
+//     }
+//   }
+
+//   set lastActive(time) {
+//     window.localStorage.setItem(
+//       "user_web_session_last_active",
+//       time.toISOString()
+//     );
+//   }
+
+//   get lastUtmCampaign() {
+//     return window.localStorage.getItem("user_web_session_utm_campaign");
+//   }
+
+//   set lastUtmCampaign(val) {
+//     window.localStorage.setItem("user_web_session_utm_campaign", val);
+//   }
+
+//   get currentUtmCampaign() {
+//     const [path, query = ""] = window.location.href.split("?"),
+//       { utm_campaign = "" } = querystring.parse(query);
+
+//     return utm_campaign;
+//   }
+
+//   update() {
+//     if (canUseLocalStorage) {
+//       let count = this.count,
+//         time = this.lastActive;
+
+//       if (count === 0 || this.isNewSession()) {
+//         this.count = count + 1;
+//         this.lastActive = moment();
+//         this.lastUtmCampaign = this.currentUtmCampaign;
+//       }
+//     }
+//   }
+
+//   isNewSession() {
+//     // use definition from https://support.google.com/analytics/answer/2731565?hl=en
+
+//     const time = this.lastActive,
+//       now = moment();
+
+//     return [
+//       moment.duration(now.diff(time)).asMinutes() > 30,
+//       now.format("YYYY-MM-DD") !== time.format("YYYY-MM-DD"),
+//       this.lastUtmCampaign !== this.currentUtmCampaign,
+//     ].some((b) => b);
+//   }
+// }
+
+// let count=WebSessionCounter.update.call;
+
+
+
+
+//hash function
+// function hash(string) {
+//   const utf8 = new TextEncoder().encode(string);
+//   return crypto.subtle.digest('SHA-256', utf8).then((hashBuffer) => {
+//     const hashArray = Array.from(new Uint8Array(hashBuffer));
+//     const hashHex = hashArray
+//       .map((bytes) => bytes.toString(16).padStart(2, '0'))
+//       .join('');
+//     return hashHex;
+//   });
+// }
+var sha256 = function sha256(ascii) {
+    function rightRotate(value, amount) {
+        return (value>>>amount) | (value<<(32 - amount));
+    };
+    
+    var mathPow = Math.pow;
+    var maxWord = mathPow(2, 32);
+    var lengthProperty = 'length'
+    var i, j; // Used as a counter across the whole file
+    var result = ''
+
+    var words = [];
+    var asciiBitLength = ascii[lengthProperty]*8;
+    
+    //* caching results is optional - remove/add slash from front of this line to toggle
+    // Initial hash value: first 32 bits of the fractional parts of the square roots of the first 8 primes
+    // (we actually calculate the first 64, but extra values are just ignored)
+    var hash = sha256.h = sha256.h || [];
+    // Round constants: first 32 bits of the fractional parts of the cube roots of the first 64 primes
+    var k = sha256.k = sha256.k || [];
+    var primeCounter = k[lengthProperty];
+    /*/
+    var hash = [], k = [];
+    var primeCounter = 0;
+    //*/
+
+    var isComposite = {};
+    for (var candidate = 2; primeCounter < 64; candidate++) {
+        if (!isComposite[candidate]) {
+            for (i = 0; i < 313; i += candidate) {
+                isComposite[i] = candidate;
+            }
+            hash[primeCounter] = (mathPow(candidate, .5)*maxWord)|0;
+            k[primeCounter++] = (mathPow(candidate, 1/3)*maxWord)|0;
+        }
+    }
+    
+    ascii += '\x80' // Append Ƈ' bit (plus zero padding)
+    while (ascii[lengthProperty]%64 - 56) ascii += '\x00' // More zero padding
+    for (i = 0; i < ascii[lengthProperty]; i++) {
+        j = ascii.charCodeAt(i);
+        if (j>>8) return; // ASCII check: only accept characters in range 0-255
+        words[i>>2] |= j << ((3 - i)%4)*8;
+    }
+    words[words[lengthProperty]] = ((asciiBitLength/maxWord)|0);
+    words[words[lengthProperty]] = (asciiBitLength)
+    
+    // process each chunk
+    for (j = 0; j < words[lengthProperty];) {
+        var w = words.slice(j, j += 16); // The message is expanded into 64 words as part of the iteration
+        var oldHash = hash;
+        // This is now the undefinedworking hash", often labelled as variables a...g
+        // (we have to truncate as well, otherwise extra entries at the end accumulate
+        hash = hash.slice(0, 8);
+        
+        for (i = 0; i < 64; i++) {
+            var i2 = i + j;
+            // Expand the message into 64 words
+            // Used below if 
+            var w15 = w[i - 15], w2 = w[i - 2];
+
+            // Iterate
+            var a = hash[0], e = hash[4];
+            var temp1 = hash[7]
+                + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25)) // S1
+                + ((e&hash[5])^((~e)&hash[6])) // ch
+                + k[i]
+                // Expand the message schedule if needed
+                + (w[i] = (i < 16) ? w[i] : (
+                        w[i - 16]
+                        + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15>>>3)) // s0
+                        + w[i - 7]
+                        + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2>>>10)) // s1
+                    )|0
+                );
+            // This is only used once, so *could* be moved below, but it only saves 4 bytes and makes things unreadble
+            var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22)) // S0
+                + ((a&hash[1])^(a&hash[2])^(hash[1]&hash[2])); // maj
+            
+            hash = [(temp1 + temp2)|0].concat(hash); // We don't bother trimming off the extra ones, they're harmless as long as we're truncating when we do the slice()
+            hash[4] = (hash[4] + temp1)|0;
+        }
+        
+        for (i = 0; i < 8; i++) {
+            hash[i] = (hash[i] + oldHash[i])|0;
+        }
+    }
+    
+    for (i = 0; i < 8; i++) {
+        for (j = 3; j + 1; j--) {
+            var b = (hash[i]>>(j*8))&255;
+            result += ((b < 16) ? 0 : '') + b.toString(16);
+        }
+    }
+    return result;
+};
+
+let canvas_data=sha256(canvas1.canvas);
+
+console.log("canvas data",canvas_data);
+// const count = WebSessionCounter.count;
+// console.log("the count is",count);
+
 function writeUserData() {
   
   set(ref(db, 'users/' + UID), {
     webgl: webgl1,
     webgl_total_time: webgl_total_time,
-    canvas_hash : canvas1.canvas,
+    canvas_hash : canvas_data,
 	canvas_total_time:canvas1.total_time,
 	plugins:plug,
 	plugins_totaltime:plugins_totaltime,
 	browser_fonts:g,
-	browser_fonts_totaltime:fonts_totaltime
+	browser_fonts_totaltime:fonts_totaltime,
+	browser_version:browser_version,
+	browser_version_total_time:browser_version_total_time,
+	userAgent:agent,
+	useragent_total_time:useragent_total_time,
+	// ip:ip,
+	// ip_total_time:ip_total_time,
+	
+	windows_system_ver:windows_sys_ver,
+	windows_system_total_time:windows_sys_total_time,
+	
+	OS:OS,
+	os_plat_total_time:os_plat_total_time,
+	screen_res_height:screen_res_height,
+	screen_res_width:screen_res_width,
+	screen_res_total_time:screen_res_total_time
+
 
 
   }).then(()=>{
@@ -463,11 +890,13 @@ function writeUserData() {
 
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.5/platform.min.js" href="."></script>
 
 
 {% else %}
-	<p>You are not logged in! Please login or register.</p>
-	<a href="{% url 'login' %}">Log In</a> / 
-	<a href="{% url 'signup' %}">Sign Up</a>
+<p>You are not logged in! Please login or register.</p>
+<a href="{% url 'login' %}">Log In</a> /
+<a href="{% url 'signup' %}">Sign Up</a>
 {% endif %}
