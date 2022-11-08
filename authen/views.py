@@ -12,6 +12,14 @@ import requests
 import ctypes
 from time import gmtime, strftime
 from datetime import date
+
+
+from django.db import models, signals
+from django.contrib.auth.models import User
+
+
+
+
 def home(request):
     
         
