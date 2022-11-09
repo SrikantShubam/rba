@@ -12,6 +12,14 @@ import requests
 import ctypes
 from time import gmtime, strftime
 from datetime import date
+
+
+from django.db import models, signals
+from django.contrib.auth.models import User
+
+
+
+
 def home(request):
     
         
@@ -105,11 +113,11 @@ def home(request):
             print("ua----------- ",ua_totaltime)
             #browser end----------------------
             #screen size ---------------------------
-            # screen_start=time.time()
-            # user32 = ctypes.windll.user32
-            # screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
-            # screen_end=time.time()
-            # screen_totaltime=screen_end-screen_start
+            screen_start=time.time()
+            user32 = ctypes.windll.user32
+            screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+            screen_end=time.time()
+            screen_totaltime=screen_end-screen_start
             #screen size end ---------------------------
 
 
@@ -177,7 +185,7 @@ def home(request):
            
             total_end=time.time()
             overall_totaltime=total_end-total_start
-            data=data_collected(Uid=uid,userid=username,ip=ip_address,system_fonts=sys_fonts,language=lang,time_zone =local_timezone,date=naive_datetime.date(),time_collected=time_collected,city=city,region=region,country=country,browser_name=browser_ua.family, browser_version =browser_ua.version_string,os_family=system_ua.family,os_version=system_ua.version_string,ua_totaltime=ua_totaltime,ip_totaltime=final_ip,timezone_totaltime=final_timezone,location_totaltime=location_totaltime,system_fonts_totaltime=fonts_totaltime,lang_totaltime=lang_totaltime,overall_totaltime=overall_totaltime)
+            data=data_collected(Uid=uid,userid=username,screensize=screensize,screensize_totaltime=screen_totaltime,ip=ip_address,system_fonts=sys_fonts,language=lang,time_zone =local_timezone,date=naive_datetime.date(),time_collected=time_collected,city=city,region=region,country=country,browser_name=browser_ua.family, browser_version =browser_ua.version_string,os_family=system_ua.family,os_version=system_ua.version_string,ua_totaltime=ua_totaltime,ip_totaltime=final_ip,timezone_totaltime=final_timezone,location_totaltime=location_totaltime,system_fonts_totaltime=fonts_totaltime,lang_totaltime=lang_totaltime,overall_totaltime=overall_totaltime)
             data.save()
 
     
