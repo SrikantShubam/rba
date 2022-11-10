@@ -8,8 +8,19 @@
     rel="stylesheet"
     type="text/css"
   />
-  <link href="{% static  'css/style.css' %}" rel="stylesheet" />
+  <!-- <link href="{% static  'css/style.css' %}" rel="stylesheet" /> -->
 </head>
+<style>
+  body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.header1 {
+  text-align: center;
+  font-size: 32px;
+}
+
+</style>
 {% if user.is_authenticated %}
 <p>Hi {{ user.full_name }}, Welcome to the main page!</p>
 <p><a href="{% url 'logout' %}">Log Out</a></p>
