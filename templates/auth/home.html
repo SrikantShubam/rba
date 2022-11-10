@@ -8,7 +8,7 @@
     rel="stylesheet"
     type="text/css"
   />
-  <link rel="stylesheet" href="{%  static  'main.css'  %}" type="text/css" />
+  <link href="{% static  'css/style.css' %}" rel="stylesheet" />
 </head>
 {% if user.is_authenticated %}
 <p>Hi {{ user.full_name }}, Welcome to the main page!</p>
@@ -606,13 +606,13 @@
   var browser_version_total_time = end_browser_version - start_browser_version;
 
   //system version
-  var windows_sys_ver_start = new Date().getTime();
-  let windows_sys_ver;
-  windows_sys_ver = navigator.oscpu;
-  console.log(windows_sys_ver);
-  var windows_sys_ver_end = new Date().getTime();
+  // var windows_sys_ver_start = new Date().getTime();
+  
+  // let windows_sys_ver = window.navigator.platform;
+  // console.log("windows_sys_version",windows_sys_ver);
+  // var windows_sys_ver_end = new Date().getTime();
 
-  var windows_sys_total_time = windows_sys_ver_end - windows_sys_ver_start;
+  // var windows_sys_total_time = windows_sys_ver_end - windows_sys_ver_start;
 
   //screen res
   var screen_res_start = new Date().getTime();
@@ -855,8 +855,8 @@
       // ip:ip,
       // ip_total_time:ip_total_time,
 
-      windows_system_ver: windows_sys_ver,
-      windows_system_total_time: windows_sys_total_time,
+      // windows_system_ver: windows_sys_ver,
+      // windows_system_total_time: windows_sys_total_time,
 
       OS: OS,
       os_plat_total_time: os_plat_total_time,
